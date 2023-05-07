@@ -2,6 +2,28 @@
   text-align: center;
 }
 
+body {
+  background-image: url("Images/Star_Wars_Background.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: yellow;
+  position: fixed;
+  font-family: Soloist-Font;
+  font-size: large;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+@font-face {
+  font-family: "Soloist-Font";
+  src: url("Fonts/Soloist3D-3vP6.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
