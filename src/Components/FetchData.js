@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SetData from "./SetData";
 
 function FetchData() {
   const [data, setData] = useState([]);
@@ -15,19 +16,7 @@ function FetchData() {
 
   return (
     <div>
-      <div className="d-flex align-items-center justify-content-center">
-        <input
-          type="text"
-          placeholder="May the Force be With You"
-          className="w-75"
-        ></input>
-      </div>
-
-      <div>
-        <table className="w-75">
-          <tr></tr>
-        </table>
-      </div>
+      <SetData data={data} placeDatas={collectData} />
     </div>
   );
 }

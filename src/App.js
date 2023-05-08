@@ -1,13 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Titles from "./Components/Titles";
-import FetchData from "./Components/Fetch_Data";
+import SetData from "./Components/SetData";
 
 function App() {
   return (
     <div>
       <Titles />
-      <FetchData />
+      <SetData />
     </div>
   );
 }
