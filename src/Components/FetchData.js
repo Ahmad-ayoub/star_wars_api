@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from "react";
+// FetchData component
+import React, { useState } from "react";
 import SetData from "./SetData";
 
 function FetchData() {
   const [data, setData] = useState([]);
-
-  useEffect(() => {
-    collectData();
-  }, []);
+  const [inputValue, setInputValue] = useState("");
 
   const collectData = async () => {
-    const response = await fetch("https://swapi.dev/api/");
+    if (inputValue.trim() === "") return; // Don't fetch if inputValue is empty
+    const response = await fetch(
+      `https://swapi.dev/api/people/?search=${inputValue}`
+    );
     const data = await response.json();
-    setData(data);
+    setData(data.results);
   };
 
   return (
     <div>
-      <SetData data={data} placeDatas={collectData} />
+      <SetData
+        placeDatas={data}
+        onSearchClick={collectData}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+      />
     </div>
   );
 }
