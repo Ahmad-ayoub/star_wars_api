@@ -4,12 +4,12 @@ function SetData(props) {
   const [inputValue, setInputValue] = useState("");
 
   function returnFormatedData() {
-    const { placeDatas } = props;
-    const dataAsTable = placeDatas.map((placeData, index) => {
-      const { Name, Birthdate, Height, Mass, Homeworld, Species } = placeData;
+    const dataAsTable = props.placeDatas.map((placeData) => {
+      const { name, birth_year, height, mass, homeworld, species } = placeData;
+
       return (
-        <div key={index}>
-          <div className="d-flex justify-content-center pt-5 w-100">
+        <div>
+          <div className="d-flex align-items-center justify-content-center pt-5 w-100">
             <table border="1" className="table">
               <tbody>
                 <tr>
@@ -20,48 +20,50 @@ function SetData(props) {
                   <td className="col-3">Homeworld</td>
                   <td className="col-3">Species</td>
                 </tr>
+                <tr>
+                  <td>{name}</td>
+                  <td>{birth_year}</td>
+                  <td>{height}</td>
+                  <td>{mass}</td>
+                  <td>{homeworld}</td>
+                  <td>{species}</td>
+                </tr>
               </tbody>
             </table>
           </div>
-          <table className="w-75">
-            <tbody>
-              <tr>
-                <td>{Name}</td>
-                <td>{Birthdate}</td>
-                <td>{Height}</td>
-                <td>{Mass}</td>
-                <td>{Homeworld}</td>
-                <td>{Species}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div>
+            <table className="w-75">
+              <tbody></tbody>
+            </table>
+          </div>
         </div>
       );
     });
     return dataAsTable;
   }
-
   return (
     <div>
-      <div className="d-flex align-items-center justify-content-center">
-        <input
-          type="text"
-          placeholder="May the Force be With You"
-          className="w-75"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        ></input>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={onSearchClick}
-        >
-          Search
-        </button>
+      <div>
+        <div className="d-flex align-items-center justify-content-center">
+          <input
+            type="text"
+            placeholder="May the Force be With You"
+            className="w-75"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          ></input>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => props.onSearchClick(inputValue)}
+          >
+            Search
+          </button>
+        </div>
         {returnFormatedData()}
       </div>
     </div>
   );
 }
-
+//debugger;
 export default SetData;
