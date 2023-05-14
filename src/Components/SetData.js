@@ -4,11 +4,10 @@ function SetData(props) {
   const [inputValue, setInputValue] = useState("");
 
   function returnFormatedData() {
-    const dataAsTable = props.placeDatas.map((placeData) => {
+    const dataAsTable = props.placeDatas.map((placeData, index) => {
       const { name, birth_year, height, mass, homeworld, species } = placeData;
-
       return (
-        <div>
+        <div key={index}>
           <div className="d-flex align-items-center justify-content-center pt-5 w-100">
             <table border="1" className="table">
               <tbody>
@@ -65,5 +64,4 @@ function SetData(props) {
     </div>
   );
 }
-//debugger;
 export default SetData;

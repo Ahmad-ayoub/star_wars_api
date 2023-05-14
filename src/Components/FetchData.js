@@ -1,6 +1,22 @@
 import React, { useState } from "react";
 import SetData from "./SetData";
 
+function listTenCharacters() {
+  const collectCharacters = async () => {
+    const characterloop = [];
+    for (let i; i <= 10; i++) {
+      characterloop.push(i);
+    }
+    const charactersList = await fetch(
+      `https://swapi.dev/api/people/?search=${characterloop}`
+    );
+    if (!charactersList.ok) {
+      console.error("API request failed", charactersList);
+      return;
+    }
+  };
+}
+
 function FetchData() {
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -18,8 +34,25 @@ function FetchData() {
       console.error("No data found", data);
       return;
     }
-    setData(data.results);
+
+    const updatedData = await Promise.all(
+      data.results.map(async (character) => {
+        const speciesNames = await fetchSpeciesNames(character.species);
+        character.species = speciesNames;
+        return character;
+      })
+    );
+    setData(updatedData);
   };
+
+  async function fetchSpeciesNames(speciesUrls) {
+    const speciesPromises = speciesUrls.map((url) =>
+      fetch(url).then((response) => response.json())
+    );
+    const speciesObjects = await Promise.all(speciesPromises);
+    const speciesName = speciesObjects.map((species) => species.name);
+    return speciesName.join(", ");
+  }
   return (
     <div>
       <SetData
