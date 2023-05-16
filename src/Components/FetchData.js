@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SetData from "./SetData";
-import CategoryTitles from "./CategoryTitles";
 
 function FetchData() {
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  useEffect(() => {
+    CollectData();
+  }, []);
 
-  const collectData = async (searchTerm) => {
+  const CollectData = async (searchTerm) => {
     const endpoint = searchTerm
       ? `https://swapi.py4e.com/api/people/?search=${searchTerm}`
       : `https://swapi.py4e.com/api/people/`;
 
     const response = await fetch(endpoint);
+    console.log(response);
+    debugger;
 
     if (!response.ok) {
       console.error("API request failed", response);
@@ -48,11 +52,10 @@ function FetchData() {
     <div>
       <SetData
         placeDatas={data}
-        onSearchClick={collectData}
+        onSearchClick={CollectData}
         inputValue={inputValue}
         setInputValue={setInputValue}
       />
-      <CategoryTitles onSearchClick={collectData}></CategoryTitles>
     </div>
   );
 }
