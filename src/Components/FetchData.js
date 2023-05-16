@@ -1,35 +1,25 @@
 import React, { useState } from "react";
 import SetData from "./SetData";
-
-function listTenCharacters() {
-  const collectCharacters = async () => {
-    const characterloop = [];
-    for (let i; i <= 10; i++) {
-      characterloop.push(i);
-    }
-    const charactersList = await fetch(
-      `https://swapi.dev/api/people/?search=${characterloop}`
-    );
-    if (!charactersList.ok) {
-      console.error("API request failed", charactersList);
-      return;
-    }
-  };
-}
+import CategoryTitles from "./CategoryTitles";
 
 function FetchData() {
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
   const collectData = async (searchTerm) => {
-    const response = await fetch(
-      `https://swapi.dev/api/people/?search=${searchTerm}`
-    );
+    const endpoint = searchTerm
+      ? `https://swapi.py4e.com/api/people/?search=${searchTerm}`
+      : `https://swapi.py4e.com/api/people/`;
+
+    const response = await fetch(endpoint);
+
     if (!response.ok) {
       console.error("API request failed", response);
       return;
     }
+
     const data = await response.json();
+
     if (!data.results || data.results.length === 0) {
       console.error("No data found", data);
       return;
@@ -42,6 +32,7 @@ function FetchData() {
         return character;
       })
     );
+
     setData(updatedData);
   };
 
@@ -61,6 +52,7 @@ function FetchData() {
         inputValue={inputValue}
         setInputValue={setInputValue}
       />
+      <CategoryTitles onSearchClick={collectData}></CategoryTitles>
     </div>
   );
 }
