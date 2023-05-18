@@ -4,18 +4,22 @@ import SetData from "./SetData";
 function FetchData() {
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [nextPageUrl, setNextPageUrl] = useState("");
+  const [prevPageUrl, setPrevPageUrl] = useState("");
+  const [currentPageUrl, setCurrentPageUrl] = useState(
+    "https://swapi.py4e.com/api/people/"
+  );
+
   useEffect(() => {
     CollectData();
-  }, []);
+  }, [currentPageUrl]);
 
   const CollectData = async (searchTerm) => {
     const endpoint = searchTerm
       ? `https://swapi.py4e.com/api/people/?search=${searchTerm}`
-      : `https://swapi.py4e.com/api/people/`;
+      : currentPageUrl;
 
     const response = await fetch(endpoint);
-    console.log(response);
-    debugger;
 
     if (!response.ok) {
       console.error("API request failed", response);
@@ -38,6 +42,20 @@ function FetchData() {
     );
 
     setData(updatedData);
+    setNextPageUrl(data.next);
+    setPrevPageUrl(data.previous);
+  };
+
+  const fetchNextPage = () => {
+    if (nextPageUrl) {
+      setCurrentPageUrl(nextPageUrl);
+    }
+  };
+
+  const fetchPrevPage = () => {
+    if (prevPageUrl) {
+      setCurrentPageUrl(prevPageUrl);
+    }
   };
 
   async function fetchSpeciesNames(speciesUrls) {
@@ -55,6 +73,8 @@ function FetchData() {
         onSearchClick={CollectData}
         inputValue={inputValue}
         setInputValue={setInputValue}
+        fetchNextPage={fetchNextPage}
+        fetchPrevPage={fetchPrevPage}
       />
     </div>
   );

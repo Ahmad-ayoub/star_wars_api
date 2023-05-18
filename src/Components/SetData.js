@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import CategoryTitles from "./CategoryTitles";
 
 function SetData(props) {
   const [inputValue, setInputValue] = useState("");
@@ -54,6 +53,23 @@ function SetData(props) {
             </tbody>
           </table>
         </div>
+        <div className="d-flex justify-content-around">
+          <button
+            onClick={props.fetchPrevPage}
+            type="button"
+            className="btn btn-primary"
+          >
+            Previous
+          </button>
+          <button
+            onClick={props.fetchNextPage}
+            type="button"
+            className="btn btn-primary"
+          >
+            Next
+          </button>
+        </div>
+        ;
       </div>
     </div>
   );
