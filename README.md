@@ -5,9 +5,16 @@ Introducing a user-friendly Star Wars API (SWAPI) app built with React, useState
 * Developed using the React library for building efficient and interactive user interfaces.
 * Leveraged the power of React components and hooks for modular code and efficient state management.
 
+Deployment with Heroku
+* The app is deployed using Heroku, a cloud platform for hosting web applications.
+* Heroku simplifies the deployment process, ensuring the app is accessible online.
+* Can be accessed [here](https://thawing-sierra-59697.herokuapp.com/)
+
 ## Intuitive interface
 * Users can easily navigate through the app to access information about Star Wars movies, characters, planets, starships, and more.
 * Utilized Bootstrap's responsive design and pre-built components for a visually appealing and user-friendly layout.
+
+![API_APP_1](https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/4df48f49-4295-4ca8-b6fe-59d503405a08)
 
 Fetching SWAPI Data
 * The app fetches data from the SWAPI endpoints using the fetch API or a library like Axios.
@@ -17,9 +24,17 @@ Storing Data with useState
 * The useState hook is used to store and manage the fetched data within the app's state.
 * This allows the app to update the UI dynamically based on the current data.
 
+As seen here you can type in any name you want and it will only show said character with their respective details:
+
+https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/93fe6f2d-be41-4d01-b7c7-7e1d39e6936a
+
 Displaying Data with Components
 * React components are used to present the fetched data in an organized and structured manner.
 * Components can be created for movies, characters, planets, starships, and other relevant entities.
+
+You can also toggle back and forth between the whole SWAPI data base through the 'previous' and 'next' buttons:
+
+https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/53052911-c8ab-455b-829d-82cbdf29cb13
 
 Bootstrap Styling
 * Leveraged Bootstrap's CSS classes and components for styling the app's UI.
@@ -28,14 +43,5 @@ Bootstrap Styling
 Handling Side Effects with useEffect
 * The useEffect hook is employed to handle side effects, such as fetching data from the SWAPI when the app loads.
 * Controlled when and how the side effects occur by specifying dependencies.
-
-Deployment with Heroku
-* The app is deployed using Heroku, a cloud platform for hosting web applications.
-* Heroku simplifies the deployment process, ensuring the app is accessible online.
-
-Example:
-An example of the Star Wars API app, showcasing its functionality and design, can be seen in the video below. This demonstration illustrates how the app fetches data, updates the UI using useState and useEffect hooks, and incorporates Bootstrap for styling and layout.
-
-[Include video demonstration here]
 
 Explore the vast Star Wars universe with the Star Wars API app, built using React, useState and useEffect hooks, and styled with Bootstrap. Feel free to access the app and delve into the exciting world of Star Wars.
