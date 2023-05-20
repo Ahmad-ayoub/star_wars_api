@@ -14,7 +14,7 @@ Deployment with Heroku
 * Users can easily navigate through the app to access information about Star Wars movies, characters, planets, starships, and more.
 * Utilized Bootstrap's responsive design and pre-built components for a visually appealing and user-friendly layout.
 
-![API_APP_1](https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/4df48f49-4295-4ca8-b6fe-59d503405a08)
+![API_APP_Screenshot](https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/60ce5d01-1999-4253-8719-bb0d6f2068bf)
 
 Fetching SWAPI Data
 * The app fetches data from the SWAPI endpoints using the fetch API or a library like Axios.
@@ -26,7 +26,7 @@ Storing Data with useState
 
 As seen here you can type in any name you want and it will only show said character with their respective details:
 
-https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/93fe6f2d-be41-4d01-b7c7-7e1d39e6936a
+https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/0bae2f76-b630-4249-97d3-688e41a2502e
 
 Displaying Data with Components
 * React components are used to present the fetched data in an organized and structured manner.
@@ -34,7 +34,7 @@ Displaying Data with Components
 
 You can also toggle back and forth between the whole SWAPI data base through the 'previous' and 'next' buttons:
 
-https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/53052911-c8ab-455b-829d-82cbdf29cb13
+https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/69cd1af5-5a60-4e7d-936c-64f15e9705f5
 
 Bootstrap Styling
 * Leveraged Bootstrap's CSS classes and components for styling the app's UI.
