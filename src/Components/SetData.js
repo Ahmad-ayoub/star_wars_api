@@ -69,7 +69,6 @@ function SetData(props) {
             Next
           </button>
         </div>
-        ;
       </div>
     </div>
   );
