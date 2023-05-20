@@ -68,7 +68,7 @@ function FetchData() {
     );
     const speciesObjects = await Promise.all(speciesPromises);
     const speciesName = speciesObjects.map((species) => species.name);
-    return speciesName.join(", ");
+    return speciesName.join(" ");
   }
 
   async function fetchHomeworldName(homeworldUrl) {
