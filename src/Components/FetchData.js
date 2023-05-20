@@ -36,8 +36,12 @@ function FetchData() {
     const updatedData = await Promise.all(
       data.results.map(async (character) => {
         const speciesNames = await fetchSpeciesNames(character.species);
-        character.species = speciesNames;
-        return character;
+        const homeWorldName = await fetchHomeworldName(character.homeworld);
+        return {
+          ...character,
+          species: speciesNames,
+          homeworld: homeWorldName,
+        };
       })
     );
 
@@ -66,6 +70,13 @@ function FetchData() {
     const speciesName = speciesObjects.map((species) => species.name);
     return speciesName.join(", ");
   }
+
+  async function fetchHomeworldName(homeworldUrl) {
+    const response = await fetch(homeworldUrl);
+    const homeworldObject = await response.json();
+    return homeworldObject.name;
+  }
+
   return (
     <div>
       <SetData
