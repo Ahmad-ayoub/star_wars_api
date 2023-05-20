@@ -4,10 +4,8 @@
 
 body {
   background-image: url("Images/Star_Wars_Background.jpeg");
-  background-size: cover;
   background-repeat: no-repeat;
   color: yellow;
-  position: fixed;
   font-family: Soloist-Font;
   font-size: large;
   top: 0;
