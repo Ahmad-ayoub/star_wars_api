@@ -43,14 +43,24 @@ function FetchData() {
       )
     ).flatMap((species) => species.data.results);
 
-    //setData(characterData);
+    tempPlanets = arrayToDict(tempPlanets);
+    tempSpecies = arrayToDict(tempSpecies);
+
+    for (const char of characterData) {
+      char.homeworld = tempPlanets[char.homeworld];
+      char.species =
+        char.species.length === 0 ? "Human" : tempSpecies[char.species[0]];
+    }
+
+    setData(characterData);
   }
 
   function arrayToDict(array) {
     let obj = {};
     for (let item of array) {
-      obj[item["url"]];
+      obj[item["url"]] = item["name"];
     }
+    return obj;
   }
 
   return (

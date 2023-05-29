@@ -1,43 +1,39 @@
 import React, { useState } from "react";
+import ReactPaginate from "react-paginate";
 
 function SetData(props) {
   const [inputValue, setInputValue] = useState("");
+  const [pageNumber, setPageNumber] = useState(0);
+  const charactersPerPage = 10;
+  const charactersViewed = pageNumber * charactersPerPage;
+  const pageCount = props.placeDatas.length / charactersPerPage;
+
+  function changePage({ selected }) {
+    setPageNumber(selected);
+  }
 
   function returnFormatedData() {
-    const dataRows = props.placeDatas.map((placeData, index) => {
-      const { name, birth_year, height, mass, homeworld, species } = placeData;
-      return (
-        <tr key={index}>
-          <td>{name}</td>
-          <td>{birth_year}</td>
-          <td>{height}</td>
-          <td>{mass}</td>
-          <td>{homeworld}</td>
-          <td>{species}</td>
-        </tr>
-      );
-    });
+    const dataRows = props.placeDatas
+      .slice(charactersViewed, charactersViewed + charactersPerPage)
+      .map((placeData, index) => {
+        const { name, birth_year, height, mass, homeworld, species } =
+          placeData;
+        return (
+          <tr key={index}>
+            <td>{name}</td>
+            <td>{birth_year}</td>
+            <td>{height}</td>
+            <td>{mass}</td>
+            <td>{homeworld}</td>
+            <td>{species}</td>
+          </tr>
+        );
+      });
     return dataRows;
   }
   return (
     <div>
       <div>
-        {/*<div className="d-flex align-items-center justify-content-center">
-          <input
-            type="text"
-            placeholder="May the Force be With You"
-            className="w-75"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          ></input>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => props.onSearchClick(inputValue)}
-          >
-            Search
-          </button>
-  </div>*/}
         <div className="d-flex align-items-center justify-content-center pt-5 w-100">
           <table border="1" className="table">
             <tbody>
@@ -53,22 +49,15 @@ function SetData(props) {
             </tbody>
           </table>
         </div>
-        {/*<div className="d-flex justify-content-around">
-          <button
-            onClick={props.fetchPrevPage}
-            type="button"
-            className="btn btn-primary"
-          >
-            Previous
-          </button>
-          <button
-            onClick={props.fetchNextPage}
-            type="button"
-            className="btn btn-primary"
-          >
-            Next
-          </button>
-</div>*/}
+        <div>
+          <ReactPaginate
+            previousLabel={"Prev"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"paginate-container"}
+          />
+        </div>
       </div>
     </div>
   );
