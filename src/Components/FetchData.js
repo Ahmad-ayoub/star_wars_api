@@ -1,91 +1,65 @@
 import React, { useState, useEffect } from "react";
 import SetData from "./SetData";
+import axios from "axios";
 
 function FetchData() {
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [nextPageUrl, setNextPageUrl] = useState("");
-  const [prevPageUrl, setPrevPageUrl] = useState("");
-  const [currentPageUrl, setCurrentPageUrl] = useState(
-    "https://swapi.py4e.com/api/people/"
-  );
+
+  // const [currentPageUrl, setCurrentPageUrl] = useState(
+  // "https://swapi.py4e.com/api/people/"
+  //);
 
   useEffect(() => {
-    CollectData();
-  }, [currentPageUrl]);
+    collectData();
+  }, []);
 
-  const CollectData = async (searchTerm) => {
-    const endpoint = searchTerm
-      ? `https://swapi.py4e.com/api/people/?search=${searchTerm}`
-      : currentPageUrl;
+  async function collectData() {
+    const characterPages = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const speciesPages = [1, 2, 3, 4];
+    const planetPages = [1, 2, 3, 4, 5, 6];
 
-    const response = await fetch(endpoint);
+    const characterData = (
+      await Promise.all(
+        characterPages.map((page) => {
+          return axios.get(`https://swapi.py4e.com/api/people/?page=${page}`);
+        })
+      )
+    ).flatMap((characters) => characters.data.results);
 
-    if (!response.ok) {
-      console.error("API request failed", response);
-      return;
-    }
+    let tempPlanets = (
+      await Promise.all(
+        planetPages.map((page) => {
+          return axios.get(`https://swapi.py4e.com/api/planets/?page=${page}`);
+        })
+      )
+    ).flatMap((planets) => planets.data.results);
 
-    const data = await response.json();
+    let tempSpecies = (
+      await Promise.all(
+        speciesPages.map((page) => {
+          return axios.get(`https://swapi.py4e.com/api/species/?page=${page}`);
+        })
+      )
+    ).flatMap((species) => species.data.results);
 
-    if (!data.results || data.results.length === 0) {
-      console.error("No data found", data);
-      return;
-    }
-
-    const updatedData = await Promise.all(
-      data.results.map(async (character) => {
-        const speciesNames = await fetchSpeciesNames(character.species);
-        const homeWorldName = await fetchHomeworldName(character.homeworld);
-        return {
-          ...character,
-          species: speciesNames,
-          homeworld: homeWorldName,
-        };
-      })
-    );
-
-    setData(updatedData);
-    setNextPageUrl(data.next);
-    setPrevPageUrl(data.previous);
-  };
-
-  const fetchNextPage = () => {
-    if (nextPageUrl) {
-      setCurrentPageUrl(nextPageUrl);
-    }
-  };
-
-  const fetchPrevPage = () => {
-    if (prevPageUrl) {
-      setCurrentPageUrl(prevPageUrl);
-    }
-  };
-
-  async function fetchSpeciesNames(speciesUrls) {
-    const speciesPromises = speciesUrls.map((url) =>
-      fetch(url).then((response) => response.json())
-    );
-    const speciesObjects = await Promise.all(speciesPromises);
-    const speciesName = speciesObjects.map((species) => species.name);
-    return speciesName.join(" ");
+    //setData(characterData);
   }
 
-  async function fetchHomeworldName(homeworldUrl) {
-    const response = await fetch(homeworldUrl);
-    const homeworldObject = await response.json();
-    return homeworldObject.name;
+  function arrayToDict(array) {
+    let obj = {};
+    for (let item of array) {
+      obj[item["url"]];
+    }
   }
 
   return (
     <div>
       <SetData
         placeDatas={data}
-        onSearchClick={CollectData}
+        //onSearchClick={collectData}
         inputValue={inputValue}
         setInputValue={setInputValue}
-        fetchNextPage={fetchNextPage}
-        fetchPrevPage={fetchPrevPage}
       />
     </div>
   );

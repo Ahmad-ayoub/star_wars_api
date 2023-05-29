@@ -22,7 +22,7 @@ function SetData(props) {
   return (
     <div>
       <div>
-        <div className="d-flex align-items-center justify-content-center">
+        {/*<div className="d-flex align-items-center justify-content-center">
           <input
             type="text"
             placeholder="May the Force be With You"
@@ -37,7 +37,7 @@ function SetData(props) {
           >
             Search
           </button>
-        </div>
+  </div>*/}
         <div className="d-flex align-items-center justify-content-center pt-5 w-100">
           <table border="1" className="table">
             <tbody>
@@ -53,7 +53,7 @@ function SetData(props) {
             </tbody>
           </table>
         </div>
-        <div className="d-flex justify-content-around">
+        {/*<div className="d-flex justify-content-around">
           <button
             onClick={props.fetchPrevPage}
             type="button"
@@ -68,7 +68,7 @@ function SetData(props) {
           >
             Next
           </button>
-        </div>
+</div>*/}
       </div>
     </div>
   );
