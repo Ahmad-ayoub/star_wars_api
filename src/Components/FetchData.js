@@ -6,10 +6,6 @@ function FetchData() {
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
-  // const [currentPageUrl, setCurrentPageUrl] = useState(
-  // "https://swapi.py4e.com/api/people/"
-  //);
-
   useEffect(() => {
     collectData();
   }, []);
@@ -67,7 +63,6 @@ function FetchData() {
     <div>
       <SetData
         placeDatas={data}
-        //onSearchClick={collectData}
         inputValue={inputValue}
         setInputValue={setInputValue}
       />

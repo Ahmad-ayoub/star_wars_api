@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 
 function SetData(props) {
-  const [inputValue, setInputValue] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const charactersPerPage = 10;
   const charactersViewed = pageNumber * charactersPerPage;
   const pageCount = props.placeDatas.length / charactersPerPage;
-
   function changePage({ selected }) {
     setPageNumber(selected);
   }
