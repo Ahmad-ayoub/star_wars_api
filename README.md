@@ -8,7 +8,7 @@ Introducing a user-friendly Star Wars API (SWAPI) app built with React, useState
 Deployment with Heroku
 * The app is deployed using Heroku, a cloud platform for hosting web applications.
 * Heroku simplifies the deployment process, ensuring the app is accessible online.
-* Can be accessed [here](https://thawing-sierra-59697.herokuapp.com/)
+* Can be accessed [here](https://starwarsapi-695103115088.herokuapp.com)
 
 ## Intuitive interface
 * Users can easily navigate through the app to access information about Star Wars movies, characters, planets, starships, and more.
@@ -23,10 +23,6 @@ Fetching SWAPI Data
 Storing Data with useState
 * The useState hook is used to store and manage the fetched data within the app's state.
 * This allows the app to update the UI dynamically based on the current data.
-
-As seen here you can type in any name you want and it will only show said character with their respective details:
-
-https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/0bae2f76-b630-4249-97d3-688e41a2502e
 
 Displaying Data with Components
 * React components are used to present the fetched data in an organized and structured manner.
