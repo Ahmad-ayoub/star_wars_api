@@ -14,7 +14,7 @@ Deployment with Heroku
 * Users can easily navigate through the app to access information about Star Wars movies, characters, planets, starships, and more.
 * Utilized Bootstrap's responsive design and pre-built components for a visually appealing and user-friendly layout.
 
-![API_APP_Screenshot](![starwarsapi](https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/a40979b2-8ffb-4af4-8106-8f9437b8c280))
+![API_APP_Screenshot](https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/a40979b2-8ffb-4af4-8106-8f9437b8c280)
 
 Fetching SWAPI Data
 * The app fetches data from the SWAPI endpoints using the fetch API or a library like Axios.
