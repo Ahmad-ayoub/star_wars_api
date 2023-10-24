@@ -30,7 +30,7 @@ Displaying Data with Components
 
 You can also toggle back and forth between the whole SWAPI data base through the 'previous' and 'next' buttons:
 
-https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/69cd1af5-5a60-4e7d-936c-64f15e9705f5
+https://github.com/Ahmad-ayoub/star_wars_api/assets/107888495/7850bcc4-4eb5-404a-b94f-2f492519afc2
 
 Bootstrap Styling
 * Leveraged Bootstrap's CSS classes and components for styling the app's UI.
